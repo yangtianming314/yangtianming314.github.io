@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>使用Hexo在Coding.net上部署个人博客 | 杨天明的博客 | 一个自由的空间</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Coding.net,Hexo">
+    <meta name="description" content="前言使用 GitHub、Coding 拥有一个静态页面的博客很简单，网上有很多优秀的教程，但是往往都需要在本地电脑上编辑，然后 push 到平台上，万一电脑没在身边或者遭遇意外，会是一件很麻烦的事情，本教程利用 Coding WebIDE 作为后台编辑文章，然后使用 Coding Pages 服务进行展示，实现了完全云端化，而且完全免费。  感谢 Phantom T 带给我的启发和帮助  介绍He">
+<meta name="keywords" content="Coding.net,Hexo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Hexo在Coding.net上部署个人博客">
+<meta property="og:url" content="http://yoursite.com/2018/02/03/使用Hexo在Coding上部署个人博客/index.html">
+<meta property="og:site_name" content="杨天明的博客">
+<meta property="og:description" content="前言使用 GitHub、Coding 拥有一个静态页面的博客很简单，网上有很多优秀的教程，但是往往都需要在本地电脑上编辑，然后 push 到平台上，万一电脑没在身边或者遭遇意外，会是一件很麻烦的事情，本教程利用 Coding WebIDE 作为后台编辑文章，然后使用 Coding Pages 服务进行展示，实现了完全云端化，而且完全免费。  感谢 Phantom T 带给我的启发和帮助  介绍He">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://7ktpiv.com1.z0.glb.clouddn.com/image/blog/coding.net%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/Coding%E5%9B%BE%E6%A0%87.png">
+<meta property="og:image" content="http://7ktpiv.com1.z0.glb.clouddn.com/image/blog/coding.net%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/%E6%A0%91%E7%8A%B6%E5%9B%BE.png">
+<meta property="og:updated_time" content="2018-02-06T02:34:08.598Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Hexo在Coding.net上部署个人博客">
+<meta name="twitter:description" content="前言使用 GitHub、Coding 拥有一个静态页面的博客很简单，网上有很多优秀的教程，但是往往都需要在本地电脑上编辑，然后 push 到平台上，万一电脑没在身边或者遭遇意外，会是一件很麻烦的事情，本教程利用 Coding WebIDE 作为后台编辑文章，然后使用 Coding Pages 服务进行展示，实现了完全云端化，而且完全免费。  感谢 Phantom T 带给我的启发和帮助  介绍He">
+<meta name="twitter:image" content="http://7ktpiv.com1.z0.glb.clouddn.com/image/blog/coding.net%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/Coding%E5%9B%BE%E6%A0%87.png">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">杨天明</h5>
+          <a href="mailto:yangtianming314@sina.com" title="yangtianming314@sina.com" class="mail">yangtianming314@sina.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                归档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags"  >
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about"  >
+                <i class="icon icon-lg icon-user-circle"></i>
+                关于作者
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://coding.net/u/yangtianming314/project" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                Coding
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">使用Hexo在Coding.net上部署个人博客</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">使用Hexo在Coding.net上部署个人博客</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-02-03T17:59:46.000Z" itemprop="datePublished" class="page-time">
+  2018-02-04
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/tutorial/">教程</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">2.</span> <span class="post-toc-text">介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hexo"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Hexo</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#特性"><span class="post-toc-number">2.1.1.</span> <span class="post-toc-text">特性</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Coding-net"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Coding.net</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#特性-1"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">特性</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#准备工作"><span class="post-toc-number">3.</span> <span class="post-toc-text">准备工作</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">4.</span> <span class="post-toc-text">安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装-Node-js"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">安装 Node.js</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#安装-Hexo"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">安装 Hexo</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#建站"><span class="post-toc-number">5.</span> <span class="post-toc-text">建站</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#config-yml"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">_config.yml</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#package-json"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">package.json</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#scaffolds"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">scaffolds</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#source"><span class="post-toc-number">5.4.</span> <span class="post-toc-text">source</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#themes"><span class="post-toc-number">5.5.</span> <span class="post-toc-text">themes</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#部署"><span class="post-toc-number">6.</span> <span class="post-toc-text">部署</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-使用Hexo在Coding上部署个人博客"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">使用Hexo在Coding.net上部署个人博客</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-02-04 01:59:46" datetime="2018-02-03T17:59:46.000Z"  itemprop="datePublished">2018-02-04</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/tutorial/">教程</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用 GitHub、Coding 拥有一个静态页面的博客很简单，网上有很多优秀的教程，但是往往都需要在本地电脑上编辑，然后 push 到平台上，万一电脑没在身边或者遭遇意外，会是一件很麻烦的事情，本教程利用 Coding WebIDE 作为后台编辑文章，然后使用 Coding Pages 服务进行展示，实现了完全云端化，而且完全免费。</p>
+<blockquote>
+<p>感谢 <a href="https://phantomt.github.io/" target="_blank" rel="noopener">Phantom T</a> 带给我的启发和帮助</p>
+</blockquote>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><h3 id="Hexo"><a href="#Hexo" class="headerlink" title="Hexo"></a>Hexo</h3><p><a href="https://hexo.io/zh-cn/" target="_blank" rel="noopener">Hexo（中文官方网站）</a> 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<h4 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h4><ul>
+<li>超快速度：Node.js 所带来的超快生成速度，让上百个页面在几秒内瞬间完成渲染。</li>
+<li>支持 Markdown：Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件。</li>
+<li>一键部署：只需一条指令即可部署到 GitHub Pages, Heroku 或其他网站。</li>
+<li>丰富的插件：Hexo 拥有强大的插件系统，安装插件可以让 Hexo 支持 Jade, CoffeeScript。</li>
+</ul>
+<h3 id="Coding-net"><a href="#Coding-net" class="headerlink" title="Coding.net"></a>Coding.net</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://7ktpiv.com1.z0.glb.clouddn.com/image/blog/coding.net%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/Coding%E5%9B%BE%E6%A0%87.png" alt="coding图标" title="">
+                </div>
+                <div class="image-caption">coding图标</div>
+            </figure>
+<p>Coding 是一个面向开发者的云端开发平台，提供代码托管，运行空间，质量控制，项目管理等功能。此外，还提供社会化协作功能，包含了社交元素，方便开发者进行技术讨论和协作。</p>
+<h4 id="特性-1"><a href="#特性-1" class="headerlink" title="特性"></a>特性</h4><ul>
+<li>代码托管：Coding 的代码托管功能除了基本的 Git 代码仓库以外，还有保护分支、代码分屏对比、代码评审等高级功能，并且整合了 Pages 服务，代码分析等开发工具，提升研发效率。 </li>
+<li>项目管理：Coding 的项目管理是针对软件开发协作定制的一站式工具，包含了任务，讨论，文件等功能。支持多成员协作，并且深度集成了代码仓库的操作与状态，让软件开发管理一目了然。 </li>
+<li>WebIDE：Coding WebIDE 是 Coding 自主研发的在线集成开发环境。用户可以通过 WebIDE 创建项目的工作空间，进行在线开发，调试等操作。与此同时，WebIDE 还提供了可分享的开发环境功能，用户可以保存当前的 Terminal 环境，分享给团队的其他成员。 </li>
+</ul>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ol>
+<li>注册 <a href="https://coding.net/" target="_blank" rel="noopener">Coding.net</a></li>
+<li>创建静态 Coding Pages 具体操作过程见：<a href="https://coding.net/help/doc/pages/getting-started.html" target="_blank" rel="noopener">帮助</a></li>
+<li>创建 <a href="https://ide.coding.net/dashboard" target="_blank" rel="noopener">Coding WebIDE</a> 工作空间，请提前熟悉 Coding WebIDE，可以利用不同分支对项目进行操作，例如本网站将 Hexo 生成并部署到 master 分支，而在 background 分支进行后台编辑。</li>
+</ol>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><blockquote>
+<p>参考 Hexo 官方中文网站的教程：<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">https://hexo.io/zh-cn/docs/</a></p>
+</blockquote>
+<p>在 Coding WebIDE 终端中，已经安装了 Git，可以查看 Git 是否安装。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git --version</span><br></pre></td></tr></table></figure>
+<h3 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h3><p>安装 Node.js 的最佳方式是使用 nvm。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br><span class="line">wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></table></figure>
+<p>安装完成后，重启终端并执行下列命令即可安装 Node.js。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nvm install stable</span><br></pre></td></tr></table></figure>
+<p>可以查看 Node.js 是否正常安装</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">node -v</span><br></pre></td></tr></table></figure>
+<h3 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h2 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h2><p>安装 Hexo 完成后，请执行下列命令，Hexo 将会在指定文件夹中新建所需要的文件。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line"><span class="built_in">cd</span> &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://7ktpiv.com1.z0.glb.clouddn.com/image/blog/coding.net%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/%E6%A0%91%E7%8A%B6%E5%9B%BE.png" alt="文件结构" title="">
+                </div>
+                <div class="image-caption">文件结构</div>
+            </figure>
+<h3 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h3><p>网站的 <a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="noopener">配置</a> 信息，可以在此配置大部分的参数。是最主要修改的文件。</p>
+<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><p>应用程序的信息。无需进行操作</p>
+<h3 id="scaffolds"><a href="#scaffolds" class="headerlink" title="scaffolds"></a>scaffolds</h3><p><a href="https://hexo.io/zh-cn/docs/writing.html" target="_blank" rel="noopener">模版</a> 文件夹。当您新建文章时，Hexo 会根据 scaffold 来建立文件。</p>
+<h3 id="source"><a href="#source" class="headerlink" title="source"></a>source</h3><p>资源文件夹是存放用户资源的地方。除 <code>_posts</code> 文件夹之外，开头命名为 <code>_</code> (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 <code>public</code> 文件夹，而其他文件会被拷贝过去。    </p>
+<h3 id="themes"><a href="#themes" class="headerlink" title="themes"></a>themes</h3><p><a href="https://hexo.io/zh-cn/docs/themes.html" target="_blank" rel="noopener">主题</a> 文件夹。Hexo 会根据主题来生成静态页面。本网站使用 <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank" rel="noopener">indigo</a> 主题。</p>
+<p><strong>具体配置和写作方法请参考 Hexo 官方网站，同时给出本网站的配置文件以供参考</strong></p>
+<p>链接: <a href="https://pan.baidu.com/s/1jJ2sk9g" target="_blank" rel="noopener">https://pan.baidu.com/s/1jJ2sk9g</a> 密码: j8i6</p>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>在根目录下 _config.yml 文件中编辑位于最后的 deploy 设置部署的相关操作</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span> <span class="comment">#部署类型</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="attr">https://git.coding.net/yourname/yourname.coding.me.git</span> <span class="comment">#库的地址</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span> <span class="comment">#部署分支</span></span><br></pre></td></tr></table></figure>
+<p>在终端安装 hexo-deployer-git。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>设置 ssh 似乎没用，每次部署仍然需要输入账号密码，但可以尝试一下。</p>
+<p><del>设置 ssh</del></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></table></figure>
+<p><del>在要求输入保存文件名时，不要选择默认，这样会替代 WebIDE 的 ssh，可以任意填写文件名比如 filename。然后输入</del></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">cat filename.pub</span><br></pre></td></tr></table></figure>
+<p><del>获得公钥，并在 Coding 设置中添加。</del></p>
+<p>生成并部署网站</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate -d</span><br></pre></td></tr></table></figure>
+<p>或</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g -d</span><br></pre></td></tr></table></figure>
+<p>部署完成后打开你的 <code>https://yourname.coding.me</code> 即可看到博客搭建完成。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2018-02-06T02:34:08.598Z" itemprop="dateUpdated">2018-02-06 10:34:08</time>
+</span><br>
+
+
+        
+    </div>
+    
+    <footer>
+        <a href="http://yoursite.com">
+            <img src="/img/avatar.jpg" alt="杨天明">
+            杨天明
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coding-net/">Coding.net</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/02/03/使用Hexo在Coding上部署个人博客/&title=《使用Hexo在Coding.net上部署个人博客》 — 杨天明的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/02/03/使用Hexo在Coding上部署个人博客/&title=《使用Hexo在Coding.net上部署个人博客》 — 杨天明的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/03/使用Hexo在Coding上部署个人博客/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用Hexo在Coding.net上部署个人博客》 — 杨天明的博客&url=http://yoursite.com/2018/02/03/使用Hexo在Coding上部署个人博客/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/03/使用Hexo在Coding上部署个人博客/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/02/04/6Plat使用IPv6的方法/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">6Plat使用IPv6的方法</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/02/03/平板电脑/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">平板电脑</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢打赏~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>杨天明 &copy; 2016 - 2018</span>
+            <span>
+                
+                Hosted by <a href="https://pages.coding.me" style="font-weight: bold">Coding Pages</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/02/03/使用Hexo在Coding上部署个人博客/&title=《使用Hexo在Coding.net上部署个人博客》 — 杨天明的博客&pic=http://yoursite.com/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/02/03/使用Hexo在Coding上部署个人博客/&title=《使用Hexo在Coding.net上部署个人博客》 — 杨天明的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/02/03/使用Hexo在Coding上部署个人博客/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用Hexo在Coding.net上部署个人博客》 — 杨天明的博客&url=http://yoursite.com/2018/02/03/使用Hexo在Coding上部署个人博客/&via=http://yoursite.com" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/02/03/使用Hexo在Coding上部署个人博客/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/02/03/使用Hexo在Coding上部署个人博客/" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

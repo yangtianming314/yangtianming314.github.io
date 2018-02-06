@@ -30,7 +30,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://7ktpiv.com1.z0.glb.clouddn.com/image/blog/coding.net%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/Coding%E5%9B%BE%E6%A0%87.png">
 <meta property="og:image" content="http://7ktpiv.com1.z0.glb.clouddn.com/image/blog/coding.net%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/%E6%A0%91%E7%8A%B6%E5%9B%BE.png">
-<meta property="og:updated_time" content="2018-02-06T02:34:08.598Z">
+<meta property="og:updated_time" content="2018-02-06T03:01:24.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Hexo在Coding.net上部署个人博客">
 <meta name="twitter:description" content="前言使用 GitHub、Coding 拥有一个静态页面的博客很简单，网上有很多优秀的教程，但是往往都需要在本地电脑上编辑，然后 push 到平台上，万一电脑没在身边或者遭遇意外，会是一件很麻烦的事情，本教程利用 Coding WebIDE 作为后台编辑文章，然后使用 Coding Pages 服务进行展示，实现了完全云端化，而且完全免费。  感谢 Phantom T 带给我的启发和帮助  介绍He">
@@ -252,15 +252,12 @@
 <p><strong>具体配置和写作方法请参考 Hexo 官方网站，同时给出本网站的配置文件以供参考</strong></p>
 <p>链接: <a href="https://pan.baidu.com/s/1jJ2sk9g" target="_blank" rel="noopener">https://pan.baidu.com/s/1jJ2sk9g</a> 密码: j8i6</p>
 <h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>在根目录下 _config.yml 文件中编辑位于最后的 deploy 设置部署的相关操作</p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span> <span class="comment">#部署类型</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="attr">https://git.coding.net/yourname/yourname.coding.me.git</span> <span class="comment">#库的地址</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span> <span class="comment">#部署分支</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span> <span class="comment">#部署类型</span></span><br><span class="line"><span class="attr">  repo:</span> <span class="string">git@git.coding.net:yourname/yourname.coding.me.git</span> <span class="comment">#库的地址（注意是ssh方式）</span></span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span> <span class="comment">#部署分支</span></span><br></pre></td></tr></table></figure>
 <p>在终端安装 hexo-deployer-git。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>设置 ssh 似乎没用，每次部署仍然需要输入账号密码，但可以尝试一下。</p>
-<p><del>设置 ssh</del></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"youremail@example.com"</span></span><br></pre></td></tr></table></figure>
-<p><del>在要求输入保存文件名时，不要选择默认，这样会替代 WebIDE 的 ssh，可以任意填写文件名比如 filename。然后输入</del></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">cat filename.pub</span><br></pre></td></tr></table></figure>
-<p><del>获得公钥，并在 Coding 设置中添加。</del></p>
+<p>设置 ssh</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/.ssh</span><br><span class="line">cat id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>获得公钥，并在 Coding 个人设置中添加 ssh 公钥。</p>
 <p>生成并部署网站</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo generate -d</span><br></pre></td></tr></table></figure>
 <p>或</p>

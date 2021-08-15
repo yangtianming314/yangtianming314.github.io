@@ -4,36 +4,185 @@
     <meta charset="utf-8" />
     <title>请假外出、返校权限查询通行</title>
     <style type="text/css">
-        body {
+        html, body {
             background-color: #F4F2F4;
+            margin: 0;
+            padding: 0;
         }
-        .block {
+        .block_1 {
             background-color: #fff;
-            margin-left: 15px;
-            margin-right: 15px;
-            padding: 12px;
+            margin-left: 4vw;
+            margin-right: 4vw;
+            padding: 3.2vw;
             display: -webkit-flex;
             display: flex;
         }
         .icon {
             color: #417CCE;
+            width: 4.3vw;
+            height: 4.3vw;
+        }
+        .code {
+            width: 40vw;
+            height: 40vw;
         }
         .middle_text {
-            font-size: 12px;
+            font-size: 3.2vw;
             font-weight: 600;
             color: #333;
         }
+        .block_2 {
+            background-color: #F6F8FF;
+            padding: 3.2vw 4vw;
+        }
+        .block_3 {
+            background-color: #fff;
+            text-align: center;
+            padding: 3.5vw;
+        }
+        .title_text {
+            font-size: 3.7vw;
+            color: #999;
+        }
+        .content_text {
+            font-size: 3.7vw;
+            color: #666;
+        }
+        #color_block {
+            height: 8.5vw;
+        }
+        .footer_block {
+            background-color: #fff;
+            padding: 2.7vw 4vw;
+            z-index: 10;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .footer_button {
+            border: 0.3vw solid #4886EC;
+            width: 26.1vw;
+            border-radius: 5.5vw;
+            text-align: center;
+            padding: 2.7vw 0;
+        }
     </style>
-    <link rel="stylesheet" href="http://at.alicdn.com/t/font_2745744_avj0kzq0g26.css">
+
+    <script>
+        function changeColor() {
+            var i = 0;
+            setInterval(function() {
+                var colorBlock = document.getElementById("color_block");
+                var arrColor = ['#A64AA8', '#FF7F29', '#4148CE', '#F11C29', '#FFF202', '#03A2EB', '#24B14F'];
+                colorBlock.style.backgroundColor = arrColor[i];
+                i++;
+                if(i == arrColor.length) i = 0;
+            }, 500)
+        }
+        function setDateText() {
+            Date.prototype.format = function(fmt){
+                var o = {
+                    "M+" : this.getMonth()+1,                 //月份
+                    "d+" : this.getDate(),                    //日
+                    "h+" : this.getHours(),                   //小时
+                    "m+" : this.getMinutes(),                 //分
+                    "s+" : this.getSeconds(),                 //秒
+                    "q+" : Math.floor((this.getMonth()+3)/3), //季度
+                    "S"  : this.getMilliseconds()             //毫秒
+                };
+
+                if(/(y+)/.test(fmt)){
+                    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+                }
+                        
+                for(var k in o){
+                    if(new RegExp("("+ k +")").test(fmt)){
+                    fmt = fmt.replace(
+                        RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));  
+                    }       
+                }
+
+                return fmt;
+            }
+            var date = new Date();
+            document.getElementById("date_text").innerHTML = date.format("yyyy-MM-dd hh:mm:ss");
+        }
+        window.onload = function() {
+            changeColor();
+            setDateText();
+        }
+        function changeAllowText() {
+            console.log("触发切换入校状态");
+            var allowText = document.getElementById("allow_text");
+            if(allowText.innerHTML == '允许入校')
+                allowText.innerHTML = '允许出校';
+            else
+                allowText.innerHTML = '允许入校';
+        }
+    </script>
 </head>
 
 <body>
 
-<div class="block">
-    <i class="iconfont icon-8636f875 icon" style="float: left;" ></i>
-    <span class="middle_text" style="margin-left: 5px; float: left; line-height: 17px; margin-top: -1px;">请假外出、返校权限查询</span>
-
+<div class="block_1">
+    <img src="icon.png" class="icon" style="float: left;" ></span>
+    <span class="middle_text" style="margin-left: 1.3vw; float: left; margin-top: -0.27vw;">请假外出、返校权限查询</span>
 </div>
+
+<div class="block_2">
+    <span class="title_text">姓名</span>
+</div>
+<div class="block_3">
+    <span class="content_text">杨天明</span>
+</div>
+
+<div class="block_2">
+    <span class="title_text">学院</span>
+</div>
+<div class="block_3">
+    <span class="content_text">信息与通信工程学院</span>
+</div>
+
+<div style="background-color: #F6F8FF; height: 2.7vw;"></div>
+<div class="block_3">
+    <div id="color_block"></div>
+</div>
+
+<div class="block_2">
+    <span class="title_text">状态码</span>
+</div>
+<div class="block_3">
+    <img src="code.png" class="code">
+</div>
+
+<div class="block_2">
+    <span class="title_text" style="font-size: 4.8vw">状态</span>
+</div>
+<div class="block_3">
+    <span id="allow_text" class="content_text" style="font-size: 4.8vw; color: #2E731E; font-weight: 500;" onclick="changeAllowText()">允许入校</span>
+</div>
+
+<div class="block_2">
+    <span class="title_text">学工号</span>
+</div>
+<div class="block_3">
+    <span class="content_text">2020210670</span>
+</div>
+
+<div class="block_2">
+    <span class="title_text">出入校时间</span>
+</div>
+<div class="block_3">
+    <span id="date_text" class="content_text"></span>
+</div>
+<div style="height: 18.7vw;"></div>
+
+<div class="footer_block">
+    <div class="footer_button">
+        <span style="color: #4886EC; font-size: 4vw;">更多</span>
+    </div>
+</div>
+
 </body>
 
 </html>
